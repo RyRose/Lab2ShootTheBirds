@@ -4,27 +4,24 @@ using UnityEngine;
 
 public class Patroller : MonoBehaviour {
 
+	public Vector2 start;
+	public Vector2 end;
 	public float speed;
-	public Camera camera;
-	
+
+	private Vector2 destination;
+
+	void Start() {
+		transform.position = start;
+	}
+
 	void Update () {
-		Vector2 pos = transform.position;
-		pos.y += speed * Time.deltaTime;
+		if (Vector2.Distance(start, transform.position) < 0.5) {
+			destination = end;
+		} else if (Vector2.Distance(end, transform.position) < 0.5) {
+			destination = start;
+		}
+
+		Vector2 pos = Vector2.MoveTowards (transform.position, destination, speed * Time.deltaTime);
 		transform.position = pos;
-
-		if (pos.y > GetTop())
-		{
-			speed = -Mathf.Abs(speed);
-		} else if (pos.y < GetBottom())
-		{
-			speed = Mathf.Abs(speed);
-		} 
-	}
-
-	public float GetTop() {
-		return camera.ViewportToWorldPoint (new Vector2 (0, 0.8f)).y;
-	}
-	public float GetBottom() {
-		return camera.ViewportToWorldPoint (new Vector2 (0, 0.1f)).y;
 	}
 }

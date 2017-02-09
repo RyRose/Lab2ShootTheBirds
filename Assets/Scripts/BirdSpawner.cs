@@ -5,7 +5,7 @@ using UnityEngine;
 public class BirdSpawner : MonoBehaviour {
 
 	public GameObject birdPreFab;
-	public float initialBirdSpeed;
+	public float initialBirdForce;
 	public float initialBirdAngle;
 
 	void Start () {
@@ -13,11 +13,11 @@ public class BirdSpawner : MonoBehaviour {
 	}
 
 	void ShootBird() {
-		float angle = Mathf.Deg2Rad * initialBirdAngle;
+		float angle = Mathf.Deg2Rad * (initialBirdAngle + Random.Range(-45, 45));
 		GameObject bird = Instantiate (birdPreFab) as GameObject;
 		bird.transform.position = transform.position;
 		Rigidbody2D body = bird.GetComponent<Rigidbody2D> ();
-		body.velocity = new Vector2(Mathf.Cos (angle), Mathf.Sin (angle)) * initialBirdSpeed;
+		body.AddForce (new Vector2 (Mathf.Cos (angle), Mathf.Sin (angle)) * (initialBirdForce * Random.Range(0.5f, 2f)));
 		Invoke ("ShootBird", Random.Range(0.5f, 3f));
 	}
 }
