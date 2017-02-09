@@ -16,6 +16,7 @@ public class Bird : MonoBehaviour {
 
 	void OnMouseEnter() {
 		Destroy (this.gameObject);
+		print (ScoreManager.getScoreManager ().Score);
 		ScoreManager.getScoreManager ().addScore (point_value);
 	}
 

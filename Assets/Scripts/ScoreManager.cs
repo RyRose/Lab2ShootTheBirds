@@ -19,6 +19,7 @@ public class ScoreManager {
 	}
 
 	public void addScore(float points) {
-		Score = Score + points;
+		Score += points;
+		Debug.Log (Score);
 	}
 }
