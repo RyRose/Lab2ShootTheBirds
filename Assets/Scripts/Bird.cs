@@ -16,21 +16,19 @@ public class Bird : MonoBehaviour {
 
 	void OnMouseEnter() {
 		Destroy (this.gameObject);
-		print (ScoreManager.getScoreManager ().Score);
-		ScoreManager.getScoreManager ().addScore (point_value);
+		ScoreManager.AddScore (point_value);
 
-		if (ScoreManager.getScoreManager ().Score > HighestScore.score) {
-			HighestScore.score = ScoreManager.getScoreManager ().Score;
+		if (ScoreManager.Score > HighestScore.score) {
+			HighestScore.score = ScoreManager.Score;
 		}
 	}
 
 	void OnCollisionEnter2D(Collision2D col) {
-		print (col.gameObject.tag);
 		if (col.gameObject.tag == "Wall") {
 			point_value = collidedValue;
 		} else if (col.gameObject.tag == "Finish") {
 			Destroy (gameObject);
-			ScoreManager.getScoreManager().addScore (offScreenValue);
+			ScoreManager.AddScore (offScreenValue);
 		}
 	}
 }

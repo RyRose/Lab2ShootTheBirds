@@ -14,7 +14,6 @@ public class HighestScore : MonoBehaviour {
 	void Awake() {
 		if (PlayerPrefs.HasKey ("ShootBirdHighScore")) {
 			score = PlayerPrefs.GetFloat ("ShootBirdHighScore");
-
 		}
 
 		PlayerPrefs.SetFloat ("ShootBirdHighScore", score);
@@ -22,7 +21,7 @@ public class HighestScore : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		Text text = this.GetComponent<Text> ();
-		text.text = "High Score: " + score;
+		text.text = "" + score;
 
 		if (score > PlayerPrefs.GetFloat("ShootBirdHighScore")) {
 			PlayerPrefs.SetFloat("ShootBirdHighScore", score);

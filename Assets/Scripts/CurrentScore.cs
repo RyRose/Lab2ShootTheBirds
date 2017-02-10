@@ -7,6 +7,6 @@ public class CurrentScore : MonoBehaviour {
 
 	public void Update() {
 		Text text = GetComponent<Text> ();
-		text.text = "Score: " + ScoreManager.getScoreManager().Score;
+		text.text = "" + ScoreManager.Score;
 	}
 }

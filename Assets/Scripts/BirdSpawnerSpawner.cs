@@ -11,7 +11,6 @@ public class BirdSpawnerSpawner : MonoBehaviour {
 
 	void Start () {
 		InvokeRepeating ("MakeNewSpawner", initialTime, waitTime);
-		InvokeRepeating ("FlipGravity", initialTime, waitTime + Random.Range (1, 5));
 	}
 		
 	void MakeNewSpawner() {
@@ -20,14 +19,6 @@ public class BirdSpawnerSpawner : MonoBehaviour {
 		var _ = Instantiate (oldSpawner) as GameObject;
 		if (allSpawners.Length == 50) {
 			CancelInvoke ("MakeNewSpawner");
-		}
-	}
-
-	void FlipGravity() {
-		var birds = GameObject.FindGameObjectsWithTag ("Bird");
-		foreach (GameObject bird in birds) {
-			var rigidbody = bird.GetComponent<Rigidbody2D> ();
-			rigidbody.gravityScale *= -1;
 		}
 	}
 }

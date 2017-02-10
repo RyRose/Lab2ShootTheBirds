@@ -1,25 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 public class ScoreManager {
 
-	private static ScoreManager manager;
-
-	public static ScoreManager getScoreManager() {
-		if (manager == null) {
-			manager = new ScoreManager();
-		}
-		return manager;
-	}
-
-	public float Score {
+	public static float Score {
 		get;
 		set;
 	}
 
-	public void addScore(float points) {
+	public static void AddScore(float points) {
 		Score += points;
-		Debug.Log (Score);
 	}
 }
