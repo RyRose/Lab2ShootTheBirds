@@ -18,7 +18,7 @@ public class Timer : MonoBehaviour {
 	public void Update() {
 		Text text = GetComponent<Text> ();
 		int time = Mathf.FloorToInt (Time.time);
-		text.text = "" + (time - start);
+		text.text = "" + (start - time + 60);
 
 		if ((time - start) == level_length) {
 			SceneManager.LoadScene (1);
